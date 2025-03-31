@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เข้าสู่ระบบ</title>
+    <link rel="stylesheet" href="#">
+</head>
+<body>
+    <div class="background"></div>
+    <section class="home">
+        <div class="container">
+            <a href="#" class="logo">LOGO</a>
+            <h2>Welcome!</h2>
+            <div class="icon">
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-github"></i>
+            </div>
+        </div>
+        
+        <div class="login">
+            <h2>เข้าสู่ระบบ</h2>
+            <form id="loginForm">
+                <div class="input">
+                    <input type="text" id="phone" placeholder="เบอร์โทรศัพท์" required>
+                    <input type="password" id="password" placeholder="รหัสผ่าน" required>
+                    <button type="submit" id="submitButton">Login</button>
+                </div>
+            </form>
+            
+            <div class="check">
+                <label><input type="checkbox"> จดจำฉัน</label>
+            </div>
+            
+            <div class="sign-up">
+                <p>ยังไม่มีบัญชี?</p>   
+                <a href="index.html">สมัครสมาชิก</a>
+            </div>
+        </div>
+
+        
+        <div id="message"></div>
+    </section>
+
+    <script src="login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>

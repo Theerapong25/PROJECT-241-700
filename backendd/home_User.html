@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าหลัก - ระบบการจัดการหนังสือ</title>
+    <link rel="stylesheet" href="home_User.css">
+</head>
+<body>
+
+<header>
+    <a href="home_User.html" id="Mainpage">หน้าหลัก</a>
+    <a href="myReservations.html" id="myReservations">การจองของฉัน</a>
+    <a href="login.html" id="login">Login</a>
+</header>
+
+<div class="container">
+    <div class="welcome-message">
+        <p>ยินดีต้อนรับสู่ระบบการจัดการหนังสือของเรา!</p>
+        <p>ค้นหาหนังสือและจัดการหนังสือของคุณได้อย่างง่ายดาย</p>
+    </div>
+
+    <!-- แถบค้นหาหนังสือ -->
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="ค้นหาหนังสือ..." onkeyup="searchBooks()">
+    </div>
+
+    <!-- แบนเนอร์โปรโมชั่น/ข่าวสาร -->
+    <div class="promo-banner">
+        <p>🎉 โปรโมชั่นพิเศษ! รับส่วนลด 10% เมื่อจองหนังสือวันนี้!</p>
+    </div>
+
+    <!-- รายการหนังสือยอดนิยม -->
+    <h2>📚 หนังสือยอดนิยม</h2>
+    <div class="book-list" id="book-list">
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="home_User.js"></script>
+
+</body>
+</html>

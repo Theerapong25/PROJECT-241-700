@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จัดการหนังสือ</title>
+    <link rel="stylesheet" href="mgbook.css"> 
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Book Management Page</h1>
+        
+        <!-- ส่วนเพิ่มหนังสือ -->
+        <div class="header">เพิ่มหนังสือ</div>
+        <div class = "form-input">
+        <div class="input">
+            <label>ชื่อหนังสือ</label>
+            <input class="form" name="title" type="text">
+        </div>
+
+        <div class="input">
+            <label>ประเภทหนังสือ</label>
+            <input class="form" name="category" type="text">
+        </div>
+
+        <div class="input">
+            <label>ผู้เขียน</label>
+            <input class="form" name="author" type="text"> 
+        </div>
+
+        <div class="input">
+            <label>ISBN</label>
+            <input class="form" name="isbn" type="text">
+        </div>
+    </div>
+
+        <div id="message" class="message"></div>
+
+        <div class="center">
+            <button type="button" onclick="submitData()" class="button">📤 ส่งข้อมูล</button>
+        </div>
+        
+        <div>
+            <input type="text" name="search-title" placeholder="ค้นหาตามชื่อหนังสือ">
+            <input type="text" name="search-author" placeholder="ค้นหาตามชื่อผู้เขียน">
+            <input type="text" name="search-category" placeholder="ค้นหาตามประเภท">
+            <button onclick="searchBooks()">🔍 ค้นหา</button>
+        </div>
+        <hr>
+        <!-- ตารางแสดงหนังสือ -->
+        <h2>📖 รายการหนังสือ</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ชื่อหนังสือ</th>
+                    <th>ประเภท</th>
+                    <th>ผู้เขียน</th>
+                    <th>ISBN</th>
+                    <th>จัดการ</th>
+                </tr>
+            </thead>
+            <tbody id="book-id">
+                <tr>
+                    <td colspan="5">⏳ กำลังโหลดข้อมูล...</td>
+                </tr>
+            </tbody>
+        </table>
+
+    <a href="home.html" class="back-button">Back to admin dashboard</a>
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="mgbook.js"></script>
+
+</body>
+</html>
