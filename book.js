@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2/promise');
 const cors = require('cors');
@@ -8,10 +9,20 @@ const port = 8080;
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// ใช้ session เพื่อเก็บข้อมูลผู้ใช้
+app.use(session({
+    secret: 'your-secret-key', 
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true } 
+}));
 
 let conn = null;
 
-// เชื่อมต่อฐานข้อมูล MySQL
+// เชื่อมต่อฐานข้อมูล
 const initMySQL = async () => {
     conn = await mysql.createConnection({
         host: 'localhost',
@@ -21,6 +32,16 @@ const initMySQL = async () => {
         port: 8831
     });
 };
+
+// 🟢 API เช็คว่าผู้ใช้ล็อกอินอยู่หรือไม่
+app.get('/me', (req, res) => {
+    if (req.session.user) {
+        return res.json({ loggedIn: true, user: req.session.user });
+    } else {
+        return res.json({ loggedIn: false });
+    }
+});
+
 
 // ฟังก์ชันตรวจสอบข้อมูลก่อนเพิ่ม
 const validateBookData = (bookData) => {
@@ -305,47 +326,66 @@ app.post('/reservations', async (req, res) => {
 });
 
 
-const ADMIN_TEL = "0999999999";
-const ADMIN_PASSWORD = "admin123";
+const ADMIN_TEL = "0984702119";
+const ADMIN_PASSWORD = "Ice9200/*/";
 
 app.post('/login', async (req, res) => {
     const { tel, password } = req.body;
+    console.log("📩 รับข้อมูลจาก Frontend:", { tel, password });
 
     if (!tel || !password) {
         return res.status(400).json({ success: false, message: 'กรุณากรอกเบอร์โทรและรหัสผ่าน' });
     }
 
     try {
-        // ตรวจสอบว่าคือ Admin หรือไม่
+        // เช็คการเข้าสู่ระบบ Admin
         if (tel === ADMIN_TEL && password === ADMIN_PASSWORD) {
+            console.log("✅ Login สำเร็จ (Admin)");
+            req.session.user = { tel, role: "admin" }; // บันทึกเซสชันของ Admin
             return res.json({ success: true, message: 'เข้าสู่ระบบ Admin สำเร็จ', isAdmin: true });
         }
 
-        // ตรวจสอบข้อมูลผู้ใช้ในฐานข้อมูล
+        // ค้นหาผู้ใช้ในฐานข้อมูล
         const [rows] = await conn.execute('SELECT * FROM users WHERE tel = ?', [tel]);
-        if (rows.length === 0) {
+
+        if (rows.length === 0 || rows[0].password !== password) {
+            console.log("❌ ไม่พบผู้ใช้หรือรหัสผ่านผิด");
             return res.status(401).json({ success: false, message: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง' });
         }
 
-        // ตรวจสอบรหัสผ่านโดยใช้ bcrypt
-        const isPasswordValid = await bcrypt.compare(password, rows[0].password);
-        if (!isPasswordValid) {
-            return res.status(401).json({ success: false, message: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง' });
-        }
+        const user = { id: rows[0].id, firstname: rows[0].firstname, lastname: rows[0].lastname, tel: rows[0].tel, role: "user" };
 
-        // ลบ password ก่อนส่งข้อมูล
-        const user = rows[0];
-        delete user.password; 
+        req.session.user = user; // บันทึกข้อมูลผู้ใช้ลงในเซสชัน
 
+        console.log("✅ Login สำเร็จ (User)");
         res.json({ success: true, message: 'เข้าสู่ระบบสำเร็จ', user, isAdmin: false });
 
     } catch (error) {
-        console.error("เกิดข้อผิดพลาดในเซิร์ฟเวอร์:", error);
+        console.error("❗เกิดข้อผิดพลาดในเซิร์ฟเวอร์:", error);
         res.status(500).json({ success: false, message: 'เกิดข้อผิดพลาดในเซิร์ฟเวอร์' });
     }
 });
+
+// 🟢 API ตรวจสอบสถานะการล็อกอิน
+app.get('/check-session', (req, res) => {
+    if (req.session.user) {
+        res.json({ success: true, user: req.session.user });
+    } else {
+        res.status(401).json({ success: false, message: 'ยังไม่ได้เข้าสู่ระบบ' });
+    }
+});
+
+// 🟢 API ออกจากระบบ (ล้าง session)
+app.post('/logout', (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            return res.status(500).json({ success: false, message: 'ไม่สามารถออกจากระบบได้' });
+        }
+        res.json({ success: true, message: 'ออกจากระบบสำเร็จ' });
+    });
+});
+
 app.listen(port, async () => {
     await initMySQL();
     console.log(`เซิร์ฟเวอร์ทำงานที่พอร์ต ${port}`); 
 });
-
