@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+
+    <h1>ยินดีต้อนรับ</h1>
+    <button id="logout">ออกจากระบบ</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("logout").addEventListener("click", async () => {
+                try {
+                    await fetch('http://localhost:8080/logout', { method: 'POST', credentials: 'include' });
+                    localStorage.removeItem("user");
+                    window.location.href = "login.html";
+                } catch (error) {
+                    console.error("❌ เกิดข้อผิดพลาดในการออกจากระบบ", error);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

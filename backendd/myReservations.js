@@ -18,6 +18,11 @@ async function fetchBookTitle() {
 // เรียกฟังก์ชันดึงชื่อหนังสือ
 fetchBookTitle();
 
+// ฟังก์ชันแปลงวันที่ให้แสดงเฉพาะ YYYY-MM-DD
+function formatDate(dateString) {
+    return new Date(dateString).toISOString().split('T')[0]; 
+}
+
 // ตรวจสอบและกำหนดค่าขั้นสูงสุดของวันที่คืน
 document.getElementById('borrowDate').addEventListener('change', function () {
     const borrowDate = new Date(this.value);
@@ -26,8 +31,8 @@ document.getElementById('borrowDate').addEventListener('change', function () {
     let maxReturnDate = new Date(borrowDate);
     maxReturnDate.setDate(maxReturnDate.getDate() + 20); // กำหนดวันสูงสุดเป็น 20 วัน
 
-    document.getElementById('returnDate').min = this.value;
-    document.getElementById('returnDate').max = maxReturnDate.toISOString().split('T')[0];
+    document.getElementById('returnDate').min = formatDate(borrowDate);
+    document.getElementById('returnDate').max = formatDate(maxReturnDate);
 });
 
 // ส่งข้อมูลการจองไปยัง server
@@ -35,14 +40,14 @@ const reservationForm = document.getElementById('reservationForm');
 reservationForm.onsubmit = async (event) => {
     event.preventDefault();
 
-    const borrowDate = new Date(document.getElementById('borrowDate').value);
-    const returnDate = new Date(document.getElementById('returnDate').value);
+    const borrowDate = document.getElementById('borrowDate').value;
+    const returnDate = document.getElementById('returnDate').value;
 
     // ตรวจสอบว่าผู้ใช้เลือกวันที่คืนภายใน 20 วัน
     let maxReturnDate = new Date(borrowDate);
     maxReturnDate.setDate(maxReturnDate.getDate() + 20);
 
-    if (returnDate > maxReturnDate) {
+    if (new Date(returnDate) > maxReturnDate) {
         alert('คุณสามารถยืมหนังสือได้ไม่เกิน 20 วัน');
         return;
     }
@@ -50,8 +55,8 @@ reservationForm.onsubmit = async (event) => {
     try {
         const response = await axios.post('http://localhost:8080/reservations', {
             book_id: bookId,
-            borrow_date: borrowDate.toISOString().split('T')[0], 
-            return_date: returnDate.toISOString().split('T')[0] 
+            borrow_date: formatDate(borrowDate), // ใช้ formatDate() ให้เป็น YYYY-MM-DD
+            return_date: formatDate(returnDate)  // ใช้ formatDate() ให้เป็น YYYY-MM-DD
         });
 
         alert('บันทึกข้อมูลการยืมสำเร็จ');

@@ -4,12 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KU Vision</title>
-    <!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KU Vision</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -51,35 +45,41 @@
         #logout {
             background-color: #000000;
             border-radius: 5px;
+            padding: 5px 15px;
         }
         #logout:hover {
             background-color: #444;
         }
         .vision-section {
-            position: relative;
             width: 80%;
-            margin: 20px auto;
+            margin: 50px auto;
             background: linear-gradient(to bottom right, white 50%, #222 50%);
             color: white;
             padding: 50px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            border-radius: 10px;
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
         }
         .vision-content {
-            max-width: 50%;
+            max-width: 60%;
+            text-align: center;
         }
         .vision-content h2 {
-            font-size: 28px;
-            margin-bottom: 10px;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        .vision-content p {
+            font-size: 18px;
+            line-height: 1.6;
         }
         footer {
             background-color: #df7b7b;
             color: white;
             text-align: center;
             padding: 10px;
-            position: absolute;
+            position: fixed;
             width: 100%;
             bottom: 0;
         }
@@ -87,13 +87,15 @@
 </head>
 <body>
     <header>
-        <div class="logo">KU</div>
+        <div class="logo">KU Vision</div>
         <nav>
             <ul>
+                <li><a href="FH.html">หน้าข้อมูล</a></li>
                 <li><a href="home_User.html">หน้าแรก</a></li>
                 <li><a href="myReservations.html">การจองของฉัน</a></li>
                 <li><a href="login.html">เข้าสู่ระบบ</a></li>
                 <li><button id="logout">ออกจากระบบ</button></li>
+                <li><a  id="username">ชื่อผู้ใช้</a></li>
             </ul>
         </nav>
     </header>
@@ -115,6 +117,16 @@
         document.getElementById('logout').addEventListener('click', function() {
             alert('ออกจากระบบสำเร็จ!');
             window.location.href = 'login.html';
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const user = JSON.parse(localStorage.getItem("user"));
+            if (!user) {
+                window.location.href = "login.html";
+            } else {
+                document.getElementById("username").textContent = user.firstname + " " + user.lastname;
+            }
         });
     </script>
 </body>

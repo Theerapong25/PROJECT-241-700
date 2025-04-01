@@ -8,22 +8,48 @@
     <link rel="stylesheet" href="myReservations.css">
 </head>
 <body>
-    <h1>จองหนังสือ</h1>
-    <h2>ชื่อหนังสือ</h2>
-    <h2 id="bookTitle">กำลังโหลดชื่อหนังสือ...</h2>
+    <nav>
+        <ul>
+            <li><a href="FH.html">หน้าข้อมูล</a></li>
+            <li><a href="home_User.html">หน้าแรก</a></li>
+            <li><a href="myReservations.html">การจองของฉัน</a></li>
+            <li><a href="login.html">เข้าสู่ระบบ</a></li>
+            <li><button id="logout">ออกจากระบบ</button></li>
+            <li><a " id="username">ชื่อผู้ใช้</a></li>
+        </ul>
+    </nav>
     
-    <div>
+    <div class="container">
+        <h1>จองหนังสือ</h1>
+        <h2>ชื่อหนังสือ</h2>
+        <h2 id="bookTitle">กำลังโหลดชื่อหนังสือ...</h2>
+        
         <form id="reservationForm">
             <label for="borrowDate">วันที่ยืม:</label>
-            <input type="date" id="borrowDate" required><br>
+            <input type="date" id="borrowDate" required>
 
             <label for="returnDate">วันที่กำหนดคืน:</label>
-            <input type="date" id="returnDate" required><br>
+            <input type="date" id="returnDate" required>
 
             <button type="submit">บันทึกข้อมูล</button>
         </form>
     </div>
-
+    
     <script src="myReservations.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const user = JSON.parse(localStorage.getItem("user"));
+            if (!user) {
+                window.location.href = "login.html";
+            } else {
+                document.getElementById("username").textContent = user.firstname + " " + user.lastname;
+            }
+        });
+        document.getElementById("logout").addEventListener("click", async () => {
+            await fetch('http://localhost:8080/logout', { method: 'POST' });
+            localStorage.removeItem("user"); // ลบ session ของผู้ใช้
+            window.location.href = "login.html";
+        });
+    </script>
 </body>
 </html>

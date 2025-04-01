@@ -7,9 +7,50 @@
     <link rel="stylesheet" href="user.css">
 </head>
 <body>
+    
 
     <div class="container">
         <h1>User Management Page</h1>
+        
+            
+            <div class="flex form-input">
+                <div class="header-form">ชื่อ</div>
+                <input class="form" name="firstname" type="text">
+            </div>
+            <div class="flex form-input">
+                <div class="header-form">นามสกุล</div>
+                <input class="form" name="lastname" type="text">
+            </div>
+            <div class="flex form-input">
+                <div class="header-form">ที่อยู่</div>
+                <input class="form" name="address" type="text">
+            </div>
+            <div class="flex form-input">
+                <div class="header-form">เบอร์ติดต่อ</div>
+                <input class="form" name="tel" type="text">
+            </div>
+            <div class="flex fole form-input">
+                <div class="header-form">ตำเเหน่ง</div>
+                <div class="flex">
+                    <div>
+                        <input name="role" type="radio" value="นักศึกษา">นักศึกษา
+                    </div>
+                    <div>
+                        <input name="role" type="radio" value="อาจารย์">อาจารย์
+                    </div>
+                </div>
+            </div>
+            <div class="flex form-input">
+                <div class="header-form">รหัสผ่าน</div>
+                <input class="form" name="password" type="password">
+            </div>
+            
+            <div id="message" class="message"></div>
+    
+            <div class="center">
+                <button onclick="submitData()" class="button">ส่งข้อมูล</button>
+            </div>
+        
         <div>
             <input type="text" name="search-firstname" placeholder="ค้นหาข้อมูลผู้ใช้">
             <button onclick="searchBooks()">🔍 ค้นหา</button>

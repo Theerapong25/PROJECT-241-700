@@ -47,8 +47,23 @@ async function returnBook(reservationId, dueDate) {
         return;
     }
 
+    // ✅ ตรวจสอบรูปแบบของวันที่ที่กรอก
+    const datePattern = /^\d{4}-\d{2}-\d{2}$/; // รูปแบบ "YYYY-MM-DD"
+    if (!datePattern.test(returnDate)) {
+        alert("❌ กรุณากรอกวันที่ในรูปแบบที่ถูกต้อง (YYYY-MM-DD)!");
+        return;
+    }
+
+    // ✅ ตรวจสอบวันที่ที่กรอกเป็นวันที่ที่ถูกต้อง
+    const returnDateObj = new Date(returnDate);
+    if (isNaN(returnDateObj)) {
+        alert("❌ วันที่ที่กรอกไม่ถูกต้อง!");
+        return;
+    }
+
     // ✅ เปรียบเทียบวันที่คืนกับกำหนดคืน
-    const status = returnDate > dueDate ? "overdue" : "returned";
+    const dueDateObj = new Date(dueDate);
+    const status = returnDateObj > dueDateObj ? "overdue" : "returned";
 
     try {
         const response = await axios.put(`${BASE_URL}/reservations/${reservationId}`, {

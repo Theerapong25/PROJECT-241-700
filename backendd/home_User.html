@@ -8,35 +8,52 @@
 </head>
 <body>
 
-<header>
-    <a href="home_User.html" id="Mainpage">หน้าหลัก</a>
-    <a href="myReservations.html" id="myReservations">การจองของฉัน</a>
-    <a href="login.html" id="login">Login</a>
-</header>
+<nav>
+    <ul>
+        <li><a href="FH.html">หน้าข้อมูล</a></li>
+        <li><a href="home_User.html">หน้าแรก</a></li>
+        <li><a href="myReservations.html">การจองของฉัน</a></li>
+        <li><a href="login.html">เข้าสู่ระบบ</a></li>
+        <li><button id="logout">ออกจากระบบ</button></li>
+        <li><a id="username">ชื่อผู้ใช้</a></li>
+    </ul>
+</nav>
 
 <div class="container">
     <div class="welcome-message">
-        <p>ยินดีต้อนรับสู่ระบบการจัดการหนังสือของเรา!</p>
+        <h1>ยินดีต้อนรับสู่ระบบการจัดการหนังสือ</h1>
         <p>ค้นหาหนังสือและจัดการหนังสือของคุณได้อย่างง่ายดาย</p>
     </div>
 
-    <!-- แถบค้นหาหนังสือ -->
     <div class="search-bar">
         <input type="text" id="searchInput" placeholder="ค้นหาหนังสือ..." onkeyup="searchBooks()">
     </div>
 
-    
     <div class="promo-banner">
-        <p></p>
+        <p>แนะนำหนังสือใหม่ทุกสัปดาห์!</p>
     </div>
 
-    <!-- รายการหนังสือยอดนิยม -->
     <h2>📚 หนังสือยอดนิยม</h2>
-    <div class="book-list" id="book-list">
-    </div>
+    <div class="book-list" id="book-list"></div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="home_User.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (!user) {
+            window.location.href = "login.html";
+        } else {
+            document.getElementById("username").textContent = user.firstname + " " + user.lastname;
+        }
+    });
+    document.getElementById("logout").addEventListener("click", async () => {
+        await fetch('http://localhost:8080/logout', { method: 'POST' });
+        localStorage.removeItem("user"); // ลบ session ของผู้ใช้
+        window.location.href = "login.html";
+    });
+</script>
 
 </body>
 </html>
