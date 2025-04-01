@@ -1,150 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>จองหนังสือ</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="myReservations.css">
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>การจองของฉัน</h1>
-        </header>
-        
-        <nav class="nav">
-            <a href="home_User.html" id="Mainpage">หน้าหลัก</a>
-            <a href="myReservations.html" id="myReservations">การจองของฉัน</a>
-            <a href="login.html" id="login">Login</a>
-            
-        </nav>
-        <title>ระบบการยืมหนังสือ</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 20px;
-            }
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                margin-top: 20px;
-            }
-            table, th, td {
-                border: 1px solid black;
-            }
-            th, td {
-                padding: 10px;
-                text-align: left;
-            }
-            button {
-                padding: 10px;
-                background-color: #4CAF50;
-                color: white;
-                border: none;
-                cursor: pointer;
-            }
-            button:hover {
-                background-color: #45a049;
-            }
-        </style>
-    </head>
-    <body>
+    <h1>จองหนังสือ</h1>
+    <h2>ชื่อหนังสือ</h2>
+    <h2 id="bookTitle">กำลังโหลดชื่อหนังสือ...</h2>
     
-        <h1>ระบบการยืมหนังสือ</h1>
-    
-        <!-- ฟอร์มสำหรับเพิ่มข้อมูลการยืม -->
-        <h2>เพิ่มข้อมูลการยืมหนังสือ</h2>
-        <form id="borrowForm">
-            <label for="user_id">รหัสผู้ใช้:</label>
-            <input type="number" id="user_id" required><br><br>
-    
-            <label for="book_id">รหัสหนังสือ:</label>
-            <input type="number" id="book_id" required><br><br>
-    
-            <label for="borrow_date">วันที่ยืม:</label>
-            <input type="date" id="borrow_date" required><br><br>
-    
-            <label for="due_date">วันที่กำหนดคืน:</label>
-            <input type="date" id="due_date" required><br><br>
-    
-            <button type="submit">เพิ่มการยืม</button>
+    <div>
+        <form id="reservationForm">
+            <label for="borrowDate">วันที่ยืม:</label>
+            <input type="date" id="borrowDate" required><br>
+
+            <label for="returnDate">วันที่กำหนดคืน:</label>
+            <input type="date" id="returnDate" required><br>
+
+            <button type="submit">บันทึกข้อมูล</button>
         </form>
-    
-        <!-- ตารางแสดงข้อมูลการยืม -->
-        <h2>ข้อมูลการยืมหนังสือ</h2>
-        <table id="borrowRecordsTable">
-            <thead>
-                <tr>
-                    <th>รหัสการยืม</th>
-                    <th>รหัสผู้ใช้</th>
-                    <th>รหัสหนังสือ</th>
-                    <th>วันที่ยืม</th>
-                    <th>วันที่กำหนดคืน</th>
-                    <th>วันที่คืน</th>
-                    <th>สถานะ</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- ข้อมูลการยืมจะถูกเพิ่มที่นี่ -->
-            </tbody>
-        </table>
-    
-        <script>
-            // เก็บข้อมูลการยืมในอาเรย์
-            let borrowRecords = [];
-    
-            // ฟังก์ชันสำหรับเพิ่มข้อมูลการยืม
-            document.getElementById('borrowForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-    
-                const user_id = document.getElementById('user_id').value;
-                const book_id = document.getElementById('book_id').value;
-                const borrow_date = document.getElementById('borrow_date').value;
-                const due_date = document.getElementById('due_date').value;
-    
-                // สร้างรายการใหม่
-                const newRecord = {
-                    borrow_id: borrowRecords.length + 1, // กำหนดรหัสการยืม
-                    user_id: user_id,
-                    book_id: book_id,
-                    borrow_date: borrow_date,
-                    due_date: due_date,
-                    return_date: null,
-                    status: 'borrowed'
-                };
-    
-                // เพิ่มข้อมูลการยืมลงในอาเรย์
-                borrowRecords.push(newRecord);
-    
-                // แสดงผลข้อมูลการยืม
-                displayBorrowRecords();
-                
-                // ล้างฟอร์ม
-                document.getElementById('borrowForm').reset();
-            });
-    
-            // ฟังก์ชันสำหรับแสดงข้อมูลการยืมในตาราง
-            function displayBorrowRecords() {
-                const tableBody = document.querySelector('#borrowRecordsTable tbody');
-                tableBody.innerHTML = ''; // เคลียร์ตารางก่อน
-    
-                borrowRecords.forEach(record => {
-                    const row = document.createElement('tr');
-                    
-                    row.innerHTML = `
-                        <td>${record.borrow_id}</td>
-                        <td>${record.user_id}</td>
-                        <td>${record.book_id}</td>
-                        <td>${record.borrow_date}</td>
-                        <td>${record.due_date}</td>
-                        <td>${record.return_date ? record.return_date : '-'}</td>
-                        <td>${record.status}</td>
-                    `;
-                    
-                    tableBody.appendChild(row);
-                });
-            }
-        </script>
-    
-    </body>
-    </html>
+    </div>
+
+    <script src="myReservations.js"></script>
+</body>
+</html>

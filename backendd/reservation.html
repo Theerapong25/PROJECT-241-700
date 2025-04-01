@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 รายการยืมหนังสือ</title>
+    <link rel="stylesheet" href="mgbook.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+</head>
+<body>
+    <h2>📋 รายการจองหนังสือ</h2>
+<table>
+    <thead>
+        <tr>
+            <th>📖 Book ID</th>
+            <th>📅 วันที่ยืม</th>
+            <th>📆 วันที่กำหนดคืน</th>
+            <th>🔄 สถานะ</th>
+            <th>📌 วันที่คืนจริง</th>
+        </tr>
+    </thead>
+    <tbody id="reservation-list">
+        <tr>
+            <td colspan="5">⏳ กำลังโหลดข้อมูล...</td>
+        </tr>
+    </tbody>
+</table>
+
+<a href="home.html" class="back-button">⬅️ กลับไปยังแดชบอร์ดแอดมิน</a>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="reservation.js"></script>
+</body>
+</html>

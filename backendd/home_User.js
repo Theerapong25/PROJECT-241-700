@@ -30,11 +30,16 @@ const BASE_URL = 'http://localhost:8080';
             const response = await axios.post(`${BASE_URL}/reservations`, { book_id: bookId });
             alert('คุณได้ทำการจองหนังสือสำเร็จ!');
             console.log(response.data);
+    
+            
+            window.location.href = 'myReservations.html?book_id=' + bookId;
+    
         } catch (error) {
             console.error('Error reserving book:', error);
             alert('เกิดข้อผิดพลาดในการจองหนังสือ');
         }
     };
+    
 
     const searchBooks = () => {
         const searchQuery = document.getElementById('searchInput').value.toLowerCase();

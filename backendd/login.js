@@ -1,41 +1,56 @@
-const BASE_URL = 'http://localhost:8080/';
+const BASE_URL = 'http://localhost:8080';
 
-// ฟังก์ชันสำหรับการล็อกอิน
-document.getElementById("loginForm").addEventListener("submit", async (event) => {
-    event.preventDefault();  
+const check_info = async () => {
+   const tel = document.getElementById("tel").value.trim();
+   const password = document.getElementById("password").value.trim();
+   const loginButton = document.getElementById("loginButton");
 
-    let submitButton = document.getElementById('submitButton');
-    let tel = document.getElementById("phone").value;  // ใช้ id="phone"
-    let password = document.getElementById("password").value;  // ใช้ id="password"
-    let messageDOM = document.getElementById('message');  // ต้องมี div ที่แสดงข้อความ
+   // ตรวจสอบค่าเบอร์โทรและรหัสผ่าน
+   if (!tel || !password) {
+      alert("กรุณากรอกเบอร์โทรและรหัสผ่าน");
+      return;
+   }
 
-    try {
-        
+   try {
+      // ปิดปุ่มเพื่อป้องกันการคลิกซ้ำ
+      loginButton.disabled = true;
+      loginButton.innerText = "กำลังเข้าสู่ระบบ...";
 
-        // ส่งข้อมูลการล็อกอินไปยังเซิร์ฟเวอร์
-        const response = await axios.post(`${BASE_URL}/login`, { tel, password });
+      // ส่งข้อมูลไปยัง Backend
+      const response = await axios.post(`${BASE_URL}/login`, { tel, password });
 
-        const userData = response.data.user;
+      console.log("Response:", response.data); // ตรวจสอบข้อมูลที่ได้จาก Backend
 
-        messageDOM.innerText = "เข้าสู่ระบบสำเร็จ";
-        messageDOM.className = "message success";
+      // ถ้าเข้าสู่ระบบสำเร็จ
+      if (response.data.success) {
+         alert(response.data.message);
 
-        localStorage.setItem('user', JSON.stringify(userData));  // เก็บข้อมูลผู้ใช้ใน localStorage
+         // เช็คว่าเป็น Admin หรือ User
+         if (response.data.isAdmin) {
+            console.log("Redirecting to home.html...");
+            window.location.href = 'home.html'; // เปลี่ยนหน้าไปที่ home.html
+         } else {
+            console.log("Redirecting to home_User.html...");
+            window.location.href = 'home_User.html'; // เปลี่ยนหน้าไปที่ home_User.html
+         }
+      } else {
+         alert(response.data.message || 'เบอร์โทรหรือรหัสผ่านไม่ถูกต้อง!');
+      }
+   } catch (error) {
+      console.error('เกิดข้อผิดพลาดระหว่างเข้าสู่ระบบ:', error);
+      alert('เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง');
+   } finally {
+      // เปิดปุ่มกลับหลังจากทำงานเสร็จ
+      loginButton.disabled = false;
+      loginButton.innerText = "เข้าสู่ระบบ";
+   }
+};
 
-        // เปลี่ยนหน้าไปตามบทบาทของผู้ใช้
-        if (userData.role === "admin") {
-            window.location.href = "admin_db.html";  // ไปที่หน้า admin
-        } else {
-            window.location.href = "Home_p.html";  // ไปที่หน้า user
-        }
-
-    } catch (error) {
-        console.log('Error:', error);
-
-        // แสดงข้อความข้อผิดพลาดเมื่อเข้าสู่ระบบไม่สำเร็จ
-        messageDOM.innerHTML = `<div>${error.response?.data?.message || "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"}</div>`;
-        messageDOM.className = "message danger";
-
-        submitButton.style.display = "block";  // แสดงปุ่ม Submit อีกครั้ง
-    }
+// เพิ่ม Event Listener ให้แน่ใจว่ารอให้ DOM โหลดก่อน
+document.addEventListener("DOMContentLoaded", function () {
+   console.log("DOM Loaded!"); // ตรวจสอบว่า DOM ถูกโหลด
+   document.getElementById("loginForm").addEventListener("submit", async function(event) {
+      event.preventDefault(); // ป้องกันการ submit แบบธรรมดา
+      await check_info();
+   });
 });

@@ -95,9 +95,12 @@ const submitData = async () => {
         }
         messageDOM.innerText = message;
         messageDOM.className = "message success";
+        
+        // เปลี่ยนหน้าไปยัง home_User.html หลังจากส่งข้อมูลสำเร็จ
+        window.location.href = 'home_User.html';
     } catch (error) {
         console.log('error message', error.message)
-        console.log('error', error.erros)
+        console.log('error', error.errors)
         if (error.response) {
             console.log(error.response)
             error.message = error.response.data.message
@@ -110,11 +113,9 @@ const submitData = async () => {
             htmlData += `<li>${error.errors[i]}</li>`
         }
         htmlData += '</ul>'
-        htmlData += '<div>'
-
+        htmlData += '</div>'
 
         messageDOM.innerHTML = htmlData
         messageDOM.className = 'message danger' 
     }
-
 }
