@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KU Vision</title>
+    <!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KU Vision</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        header {
+            background-color: #cb7a7a;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 10px;
+        }
+        nav ul li a, #logout {
+            color: white;
+            text-decoration: none;
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        #logout {
+            background-color: #000000;
+            border-radius: 5px;
+        }
+        #logout:hover {
+            background-color: #444;
+        }
+        .vision-section {
+            position: relative;
+            width: 80%;
+            margin: 20px auto;
+            background: linear-gradient(to bottom right, white 50%, #222 50%);
+            color: white;
+            padding: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .vision-content {
+            max-width: 50%;
+        }
+        .vision-content h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #df7b7b;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">KU</div>
+        <nav>
+            <ul>
+                <li><a href="home_User.html">หน้าแรก</a></li>
+                <li><a href="myReservations.html">การจองของฉัน</a></li>
+                <li><a href="login.html">เข้าสู่ระบบ</a></li>
+                <li><button id="logout">ออกจากระบบ</button></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="vision-section">
+            <div class="vision-content">
+                <h2>วิสัยทัศน์ (Vision)</h2>
+                <p>เป็นศูนย์กลางของข้อมูลเพื่อสนับสนุนการศึกษา มหาวิทยาลัยเกษตรศาสตร์</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 KU Vision. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        document.getElementById('logout').addEventListener('click', function() {
+            alert('ออกจากระบบสำเร็จ!');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
