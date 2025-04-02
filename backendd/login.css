@@ -1,15 +1,21 @@
-* {
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("https://images.unsplash.com/photo-1614849963640-9cc74b2a826f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
 }
-
+.logo img {
+    width: 100px;  
+    height: auto;
+    border-radius: 30px;
+}
 /* Background */
 .background {
     width: 100%;
-    height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    height: 100px;
 }
 
 /* Main Container */
@@ -17,15 +23,13 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 75%;
+    width: 50%;
     height: auto;
     transform: translate(-50%, -50%);
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    border-radius: 30px;
+    border-radius: 50px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     display: flex;
-    gap: 40px;
     padding: 40px;
 }
 
@@ -34,45 +38,32 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
     text-align: center;
-    color: firebrick;
+    color: #6A9C89;
 }
 
 .content .logo {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-top: 60px;
     text-decoration: none;
-    color: firebrick;
+    color: #6A9C89;
     font-weight: 700;
 }
 
 .content h2, .content h3 {
-    font-size: 1.2em;
+    font-size: 20px;
+    margin-top: 5px;
     margin-bottom: 10px;
 }
 
 .content p {
-    font-size: 0.9em;
+    margin-top: 30px;
+    padding :7px;
+    font-size: 10px;
     margin-bottom: 30px;
     color: #666;
 }
-
-.content .icon {
-    gap: 20px;
-    font-size: 1.5em;
-}
-
-.content .icon i {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.content .icon i:hover {
-    transform: translateY(-5px);
-}
-
-
 .login {
     flex: 1;
     background: rgba(255, 255, 255, 0.95);
@@ -85,7 +76,7 @@
 .login h2 {
     font-size: 2.5em;
     margin-bottom: 30px;
-    color: firebrick;
+    color: #3F7D58;
 }
 
 .login .input {
@@ -96,22 +87,22 @@
     width: 100%;
     padding: 15px;
     border: none;
-    border-bottom: 3px solid firebrick;
+    border-bottom: 3px solid #50926a;
     background: transparent;
-    color: firebrick;
+    color: #000000;
     font-size: 1em;
     transition: border-color 0.3s ease;
 }
 
 .login input:focus {
-    border-color: #8b0000;
+    border-color: #3F7D58;
 }
 
 .login button {
     margin-top: 10px;
     width: 100%;
     padding: 15px;
-    background: firebrick;
+    background: #3F7D58;
     color: white;
     border: none;
     border-radius: 25px;
@@ -121,7 +112,7 @@
 }
 
 .login button:hover {
-    background: #8b0000;
+    background: #569270;
 }
 
 .check {
@@ -137,33 +128,21 @@
 }
 
 .sign-up a {
-    color: firebrick;
+    color: #3F7D58;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .sign-up a:hover {
-    color: #8b0000;
+    color: #1b3124;
 }
 
 
 @media (max-width: 1200px) {
-    .home {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .content, .login {
-        flex: 1;
-    }
-}
-
-@media (max-width: 768px) {
     .header {
         padding: 20px;
     }
-    
     .home {
         width: 90%;
         padding: 20px;
@@ -171,5 +150,8 @@
     
     .login {
         padding: 20px;
+    }
+    .login input {
+        width: 90%;
     }
 }

@@ -13,15 +13,20 @@ async function fetchReservations() {
                 return;
             }
 
+            // ฟังก์ชันแปลงวันที่
+            const formatDate = (dateString) => {
+                return dateString ? new Date(dateString).toISOString().split("T")[0] : "📌 ยังไม่คืน";
+            };
+
             reservations.forEach(reservation => {
-                const returnDate = reservation.return_date ? reservation.return_date : "📌 ยังไม่คืน";
+                const returnDate = formatDate(reservation.return_date);
                 const isReturned = reservation.return_date !== null;
                 
                 const row = `
                     <tr>
                         <td>${reservation.book_id}</td>
-                        <td>${reservation.borrow_date}</td>
-                        <td>${reservation.due_date}</td>
+                        <td>${formatDate(reservation.borrow_date)}</td>
+                        <td>${formatDate(reservation.due_date)}</td>
                         <td>${reservation.status}</td>
                         <td>${returnDate}</td>
                         <td>
@@ -29,7 +34,7 @@ async function fetchReservations() {
                         </td>
                     </tr>
                 `;
-                tbody.innerHTML += row;
+                tbody.insertAdjacentHTML("beforeend", row); // ใช้ insertAdjacentHTML แทน innerHTML +=
             });
         })
         .catch(error => {

@@ -4,113 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KU Vision</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-            color: #000000;
-        }
-        header {
-            background-color: #cb7a7a;
-            color: white;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        nav ul li {
-            margin: 0 10px;
-        }
-        nav ul li a, #logout {
-            color: white;
-            text-decoration: none;
-            background: none;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-            padding: 5px 10px;
-        }
-        #logout {
-            background-color: #000000;
-            border-radius: 5px;
-            padding: 5px 15px;
-        }
-        #logout:hover {
-            background-color: #444;
-        }
-        .vision-section {
-            width: 80%;
-            margin: 50px auto;
-            background: linear-gradient(to bottom right, white 50%, #222 50%);
-            color: white;
-            padding: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 10px;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        .vision-content {
-            max-width: 60%;
-            text-align: center;
-        }
-        .vision-content h2 {
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-        .vision-content p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        footer {
-            background-color: #df7b7b;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="FH.css">
+    
 </head>
 <body>
     <header>
-        <div class="logo">KU Vision</div>
+        <div class="logo">
+            <img src="images/001.png" alt="Library Hub Logo">
+            <p>Library Hub</p>
+        </div>
         <nav>
             <ul>
-                <li><a href="FH.html">หน้าข้อมูล</a></li>
-                <li><a href="home_User.html">หน้าแรก</a></li>
+                <li><a href="FH.html">ข้อมูลห้องสมุด</a></li>
+                <li><a href="home_User.html">หน้าหลัก</a></li>
                 <li><a href="myReservations.html">การจองของฉัน</a></li>
                 <li><a href="login.html">เข้าสู่ระบบ</a></li>
+                <li><span id="username">ชื่อผู้ใช้</span></li>
                 <li><button id="logout">ออกจากระบบ</button></li>
-                <li><a  id="username">ชื่อผู้ใช้</a></li>
             </ul>
         </nav>
     </header>
     
-    <main>
-        <section class="vision-section">
+    
+        <div class="vision-section">
             <div class="vision-content">
-                <h2>วิสัยทัศน์ (Vision)</h2>
-                <p>เป็นศูนย์กลางของข้อมูลเพื่อสนับสนุนการศึกษา มหาวิทยาลัยเกษตรศาสตร์</p>
+                <h2>วิสัยทัศน์ของเรา</h2>
+                <p>ศูนย์กลางแห่งข้อมูลเพื่อสนับสนุนการศึกษาและวิจัยของมหาวิทยาลัยเกษตรศาสตร์</p>
             </div>
-        </section>
-    </main>
+        </div>
+    
     
     <footer>
-        <p>&copy; 2025 KU Vision. All rights reserved.</p>
+        <p>&copy; 2025 Library Hub. All rights reserved.</p>
+        <p>เวลาเปิดบริการ</p>
+        <p>จันทร์ - พฤหัสบดี : 08.00 - 20.00 น.</p>
+        <p>ศุกร์ :  08.00 - 16.30 น.</p>
+        <p>เสาร์ - อาทิตย์ : 08.00 - 16.00 น.</p>
+        <p>วันหยุดราชการ : ปิดบริการ</p>
     </footer>
     
     <script>

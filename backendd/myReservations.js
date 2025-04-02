@@ -55,8 +55,8 @@ reservationForm.onsubmit = async (event) => {
     try {
         const response = await axios.post('http://localhost:8080/reservations', {
             book_id: bookId,
-            borrow_date: formatDate(borrowDate), // ใช้ formatDate() ให้เป็น YYYY-MM-DD
-            return_date: formatDate(returnDate)  // ใช้ formatDate() ให้เป็น YYYY-MM-DD
+            borrow_date: new Date(borrowDate).toISOString(),//เวลาที่ส่งมาจากผู้ใช้
+            return_date: new Date(returnDate).toISOString()//เวลาที่ผู้ใช้คืนหนังสือ
         });
 
         alert('บันทึกข้อมูลการยืมสำเร็จ');

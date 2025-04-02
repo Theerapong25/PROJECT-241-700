@@ -1,10 +1,13 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
-}
-.logo {
+
+ body {
+     font-family: Arial, sans-serif;
+     background-image: url("https://images.unsplash.com/photo-1614849963640-9cc74b2a826f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+     margin: 0;
+     padding: 0;
+     background-color: #ffffff;
+     color: #000000;
+ }
+ .logo {
     display: flex;
     align-items: center;
     gap: 10px;  /* ระยะห่างระหว่างรูปกับข้อความ */
@@ -54,47 +57,30 @@ body {
  #logout:hover {
      background-color: #444;
  }
-.container {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 20px;
-    background: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center;
-}
-
-h1, h2 {
-    color: #333;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-input {
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-button {
-    background-color: #77b37c;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #218838;
-}
-footer {
+ .vision-section {
+     width: 80%;
+     margin: 50px auto;
+     color: rgb(5, 5, 5);
+     padding: 50px;
+     display: flex;
+     justify-content: center;
+     border-radius: 15px;
+     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+     background-color: #fff5e4bf;
+ }
+ .vision-content {
+     max-width: 60%;
+     text-align: center;
+ }
+ .vision-content h2 {
+     font-size: 32px;
+     margin-bottom: 15px;
+ }
+ .vision-content p {
+     font-size: 18px;
+     line-height: 1.6;
+ }
+ footer {
     background-color:#6A9C89;
      color: white;
      font-size: smaller;

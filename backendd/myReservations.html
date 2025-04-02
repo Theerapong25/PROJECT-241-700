@@ -8,16 +8,22 @@
     <link rel="stylesheet" href="myReservations.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="FH.html">หน้าข้อมูล</a></li>
-            <li><a href="home_User.html">หน้าแรก</a></li>
-            <li><a href="myReservations.html">การจองของฉัน</a></li>
-            <li><a href="login.html">เข้าสู่ระบบ</a></li>
-            <li><button id="logout">ออกจากระบบ</button></li>
-            <li><a " id="username">ชื่อผู้ใช้</a></li>
-        </ul>
-    </nav>
+    <header>
+        <div class="logo">
+            <img src="images/001.png" alt="Library Hub Logo">
+            <p>Library Hub</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="FH.html">ข้อมูลห้องสมุด</a></li>
+                <li><a href="home_User.html">หน้าหลัก</a></li>
+                <li><a href="myReservations.html">การจองของฉัน</a></li>
+                <li><a href="login.html">เข้าสู่ระบบ</a></li>
+                <li><span id="username">ชื่อผู้ใช้</span></li>
+                <li><button id="logout">ออกจากระบบ</button></li>
+            </ul>
+        </nav>
+    </header>
     
     <div class="container">
         <h1>จองหนังสือ</h1>
@@ -34,6 +40,14 @@
             <button type="submit">บันทึกข้อมูล</button>
         </form>
     </div>
+    <footer>
+        <p>&copy; 2025 Library Hub. All rights reserved.</p>
+        <p>เวลาเปิดบริการ</p>
+        <p>จันทร์ - พฤหัสบดี : 08.00 - 20.00 น.</p>
+        <p>ศุกร์ :  08.00 - 16.30 น.</p>
+        <p>เสาร์ - อาทิตย์ : 08.00 - 16.00 น.</p>
+        <p>วันหยุดราชการ : ปิดบริการ</p>
+    </footer>
     
     <script src="myReservations.js"></script>
     <script>
