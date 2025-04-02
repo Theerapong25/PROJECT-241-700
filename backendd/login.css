@@ -12,6 +12,9 @@ body {
     height: auto;
     border-radius: 30px;
 }
+.logo img:hover{
+    transform: scale(1.05);
+}
 /* Background */
 .background {
     width: 100%;
@@ -51,14 +54,19 @@ body {
     font-weight: 700;
 }
 
-.content h2, .content h3 {
+.content h2 {
+    font-size: 25px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.content h3{
     font-size: 20px;
     margin-top: 5px;
     margin-bottom: 10px;
 }
 
 .content p {
-    margin-top: 30px;
+    margin-top: 5px;
     padding :7px;
     font-size: 10px;
     margin-bottom: 30px;
@@ -74,7 +82,7 @@ body {
 }
 
 .login h2 {
-    font-size: 2.5em;
+    font-size: 16px;
     margin-bottom: 30px;
     color: #3F7D58;
 }
@@ -84,7 +92,7 @@ body {
 }
 
 .login input {
-    width: 100%;
+    width: 95%;
     padding: 15px;
     border: none;
     border-bottom: 3px solid #50926a;
@@ -99,29 +107,35 @@ body {
 }
 
 .login button {
-    margin-top: 10px;
+    margin-top: 20px;
     width: 100%;
     padding: 15px;
+    margin-left: 10px;
     background: #3F7D58;
     color: white;
     border: none;
     border-radius: 25px;
-    font-size: 1em;
+    font-size: 15px;
     cursor: pointer;
     transition: background 0.3s ease;
 }
 
 .login button:hover {
     background: #569270;
+    transform: scale(1.05);
+   
 }
 
 .check {
     margin: 20px 0;
     display: flex;
     align-items: center;
-    gap: 10px;
 }
-
+.checkbox-label {
+    display: flex;
+    gap: 5px; 
+    white-space: nowrap; /* ป้องกันข้อความขึ้นบรรทัดใหม่ */
+}
 .sign-up {
     text-align: center;
     margin-top: 20px;
@@ -136,9 +150,8 @@ body {
 
 .sign-up a:hover {
     color: #1b3124;
+    
 }
-
-
 @media (max-width: 1200px) {
     .header {
         padding: 20px;

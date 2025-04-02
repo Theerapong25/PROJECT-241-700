@@ -27,49 +27,39 @@
 
 <div class="container">
     <div class="welcome-message">
-        <h1>ยินดีต้อนรับสู่ระบบการจัดการหนังสือ</h1>
-        <p>ค้นหาหนังสือและจัดการหนังสือของคุณได้อย่างง่ายดาย</p>
+        <h1>ระบบการค้นหาหนังสือ</h1>
+        <p>ค้นหาหนังสือและจัดการยืม-คืนหนังสือ</p>
     </div>
 
     <div class="search-bar">
         <input type="text" id="searchInput" placeholder="ค้นหาหนังสือ..." onkeyup="searchBooks()">
     </div>
 
-    <div class="promo-banner">
-        <p>แนะนำหนังสือใหม่ทุกสัปดาห์!</p>
-    </div>
-    
-
-    <h2>📚 หนังสือยอดนิยม</h2>
+    <h2>📚 หนังสือทั้งหมด</h2>
     <div class="book-list" id="book-list"></div>
     
 </div>
 <footer>
-    <p>&copy; 2025 Library Hub. All rights reserved.</p>
-    <p>เวลาเปิดบริการ</p>
-    <p>จันทร์ - พฤหัสบดี : 08.00 - 20.00 น.</p>
-    <p>ศุกร์ :  08.00 - 16.30 น.</p>
-    <p>เสาร์ - อาทิตย์ : 08.00 - 16.00 น.</p>
-    <p>วันหยุดราชการ : ปิดบริการ</p>
+    <div class="footer-info">
+        <p>&copy; 2025 Library Hub. All rights reserved.</p>
+        <p>เวลาเปิดบริการ</p>
+        <p>จันทร์ - พฤหัสบดี : 08.00 - 20.00 น.</p>
+        <p>ศุกร์ : 08.00 - 16.30 น.</p>
+        <p>เสาร์ - อาทิตย์ : 08.00 - 16.00 น.</p>
+        <p>วันหยุดราชการ : ปิดบริการ</p>
+    </div>
+
+    <div class="contact-info">
+        <h3>ติดต่อเรา</h3>
+        <p>📍 ที่อยู่: 123 ถนนวิทยา เขตการศึกษา เมืองมหาวิทยาลัย</p>
+        <p>📞 โทรศัพท์: 098-470-2119</p>
+        <p>📧 อีเมล: theerapong.kl@ku.th</p>
+        <p>🌐 เว็บไซต์: <a href="https://libraryhub.com" target="_blank">www.libraryhub.com</a></p>
+        <p>📍 แผนที่: <a href="https://maps.app.goo.gl/UkBwoy8AvtzGzyUb9" target="_blank">ดูใน Google Maps</a></p>
+    </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="home_User.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", async () => {
-        const user = JSON.parse(localStorage.getItem("user"));
-        if (!user) {
-            window.location.href = "login.html";
-        } else {
-            document.getElementById("username").textContent = user.firstname + " " + user.lastname;
-        }
-    });
-    document.getElementById("logout").addEventListener("click", async () => {
-        await fetch('http://localhost:8080/logout', { method: 'POST' });
-        localStorage.removeItem("user"); // ลบ session ของผู้ใช้
-        window.location.href = "login.html";
-    });
-</script>
-
 </body>
 </html>

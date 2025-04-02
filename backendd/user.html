@@ -7,12 +7,26 @@
     <link rel="stylesheet" href="user.css">
 </head>
 <body>
-    
-
     <div class="container">
+        <div class="navbar " id="adminDashboard">
+            <h2>Admin Dashboard</h2>
+            <div class="section">
+                <a href="home.html" class="button">หน้าหลัก</a>
+            </div>
+            <div class="section">
+                <a href="mgbook.html" class="button">จัดการหนังสือ</a>
+            </div>
+            <div class="section">
+                <a href="user.html" class="button">ดูข้อมูลลูกค้า</a>
+            </div>
+            <div class="section">
+                <a href="reservation.html" class="button">จำนวนหนังสือที่ถูกยืมอยู่</a>
+            </div>
+            <div class="section">
+                <a href="login.html" class="button">ออกจากระบบ</a>
+            </div>
+        </div>
         <h1>User Management Page</h1>
-        
-            
             <div class="flex form-input">
                 <div class="header-form">ชื่อ</div>
                 <input class="form" name="firstname" type="text">
@@ -51,15 +65,12 @@
                 <button onclick="submitData()" class="button">ส่งข้อมูล</button>
             </div>
         
-        <div>
-            <input type="text" name="search-firstname" placeholder="ค้นหาข้อมูลผู้ใช้">
-            <button onclick="searchBooks()">🔍 ค้นหา</button>
-        </div>
+        
 
         <div id="user" class="user-container">
             <p>กำลังโหลดข้อมูลผู้ใช้...</p>
         </div>
-        <a href="home.html" class="back-button">Back to admin dashboard</a>
+        <a href="home.html" class="back-button"> ⬅️ Back to admin dashboard</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>

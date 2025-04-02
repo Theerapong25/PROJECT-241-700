@@ -1,18 +1,14 @@
-
- body {
-     font-family: Arial, sans-serif;
-     background-image: url("https://images.unsplash.com/photo-1614849963640-9cc74b2a826f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-     margin: 0;
-     padding: 0;
-     background-color: #ffffff;
-     color: #000000;
- }
- .logo {
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+.logo {
     display: flex;
     align-items: center;
     gap: 10px;  /* ระยะห่างระหว่างรูปกับข้อความ */
 }
-
 .logo img {
     width: 50px;  /* ปรับขนาดโลโก้ */
     height: auto;
@@ -57,35 +53,103 @@
  #logout:hover {
      background-color: #444;
  }
- .vision-section {
-     width: 80%;
-     margin: 50px auto;
-     color: rgb(5, 5, 5);
-     padding: 50px;
-     display: flex;
-     justify-content: center;
-     border-radius: 15px;
-     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
-     background-color: #fff5e4bf;
- }
- .vision-content {
-     max-width: 60%;
-     text-align: center;
- }
- .vision-content h2 {
-     font-size: 32px;
-     margin-bottom: 15px;
- }
- .vision-content p {
-     font-size: 18px;
-     line-height: 1.6;
- }
- footer {
-    background-color:#6A9C89;
-     color: white;
-     font-size: smaller;
-     padding: 10px;
-     position: fixed;
-     width: 100%;
-     bottom: 0;
- }
+.container {
+    max-width: 90%;
+    margin: 30px auto;
+    background-color: rgba(243, 235, 216, 0.337);
+    padding: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.vision-section {
+    background-image: url("https://www.bltbangkok.com/wp-content/uploads/2020/04/%E0%B8%AA%E0%B8%B4%E0%B9%88%E0%B8%87%E0%B8%9E%E0%B8%B4%E0%B8%A1%E0%B8%9E%E0%B9%8C_Body2-696x464.jpg");
+    text-align: center;
+    padding: 150px;
+    
+    border-radius: 0px;
+}
+
+.vision-section h2 {
+    color: #2c3e50;
+}
+
+/* ส่วนแนะนำหนังสือ */
+.book-recommendations {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.book-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.book {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 250px;
+    transition: transform 0.3s ease;
+}
+
+.book img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.book h3 {
+    color: #34495e;
+    font-size: 1.2em;
+}
+
+.book p {
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+
+.book a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #2980b9;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.book:hover {
+    transform: scale(1.05);
+}
+
+
+footer {
+    background-color: #6A9C89;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.footer-info, .contact-info {
+    width: 45%; 
+    text-align: left;
+}
+.contact-info a {
+    color: #FFD700; 
+    text-decoration: none;
+}
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-info, .contact-info {
+        width: 100%;
+        text-align: center;
+    }
+}

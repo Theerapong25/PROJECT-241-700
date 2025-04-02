@@ -94,12 +94,32 @@ button {
 button:hover {
     background-color: #218838;
 }
+
 footer {
-    background-color:#6A9C89;
-     color: white;
-     font-size: smaller;
-     padding: 10px;
-     position: fixed;
-     width: 100%;
-     bottom: 0;
- }
+    background-color: #6A9C89;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.footer-info, .contact-info {
+    width: 45%; 
+    text-align: left;
+}
+.contact-info a {
+    color: #FFD700; 
+    text-decoration: none;
+}
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-info, .contact-info {
+        width: 100%;
+        text-align: center;
+    }
+}

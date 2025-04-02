@@ -1,0 +1,155 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #000000;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+.navbar {
+    width: 100%;
+    background-color: #6A9C89;
+    color: white;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar h2 {
+    color: #FFA725;
+    margin: 0;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    background-color: #6A9C89;
+    padding: 10px 15px;
+    border-radius: 5px;
+    
+}
+
+.navbar a:hover {
+    background-color: #3c584d;
+}
+
+.container {
+    width: 100%;
+    background: #ffffff;
+    padding: 60px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left
+    
+}
+
+h1, h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #34495e;
+}
+.input {
+    width: 15%;
+    margin-bottom: 10px;
+}
+
+.form {
+    width: 20%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.center {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.button {
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.button:hover {
+    background-color: #2980b9;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #3c9451;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+
+button.delete {
+    width: 50px;
+    margin-top: 10px;
+    background-color: #dc3546f4;
+    color: white;
+}
+.back-button {
+    margin: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3c9451;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: 0.3s;
+    
+}

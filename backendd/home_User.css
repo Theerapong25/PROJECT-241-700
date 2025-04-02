@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
+    background-image: url("https://www.thaiprint.org/wp-content/uploads/2023/07/p52-55_02_1200x628_fb.jpeg");
 }
 .logo {
     display: flex;
@@ -60,7 +61,7 @@ body {
     width: 80%;
     margin: 50px auto;
     padding: 20px;
-    background: white;
+    background: rgba(255, 255, 255, 0.805);
     border-radius: 8px;
     text-align: center;
 }
@@ -81,17 +82,21 @@ h1, h2 {
 .book-list {
        display: grid;
        grid-template-columns: repeat(3, 1fr);
-       gap: 20px;
-   }
-   .book-card {
-       background-color: white;
-       padding: 15px;
-       border-radius: 8px;
-       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-   }
-   .book-card img {
-       width: 100%;
-       height: 200px;
+     gap: 20px;
+ }
+
+ .book-card {
+     
+     background-color: white;
+     padding: 15px;
+     border-radius: 20px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ }
+ 
+ 
+ .book-card img {
+     width: 100%;
+     height: 200px;
        object-fit: cover;
        border-radius: 5px;
    }
@@ -109,12 +114,32 @@ h1, h2 {
        text-align: center;
        margin: 20px 0;
    }
-   footer {
-    background-color:#6A9C89;
-     color: white;
-     font-size: smaller;
-     padding: 10px;
-     position: fixed;
-     width: 100%;
-     bottom: 0;
- }
+   
+footer {
+    background-color: #6A9C89;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.footer-info, .contact-info {
+    width: 45%; 
+    text-align: left;
+}
+.contact-info a {
+    color: #FFD700; 
+    text-decoration: none;
+}
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-info, .contact-info {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -4,10 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📚 รายการยืมหนังสือ</title>
-    <link rel="stylesheet" href="mgbook.css">
+    <link rel="stylesheet" href="reservation.css">
 </head>
 <body>
-    <h2>📋 รายการจองหนังสือ</h2>
+    <div class="container">
+        <div class="navbar " id="adminDashboard">
+            <h2>Admin Dashboard</h2>
+            <div class="section">
+                <a href="home.html" class="button">หน้าหลัก</a>
+            </div>
+            <div class="section">
+                <a href="mgbook.html" class="button">จัดการหนังสือ</a>
+            </div>
+            <div class="section">
+                <a href="user.html" class="button">ดูข้อมูลลูกค้า</a>
+            </div>
+            <div class="section">
+                <a href="reservation.html" class="button">จำนวนหนังสือที่ถูกยืมอยู่</a>
+            </div>
+            <div class="section">
+                <a href="login.html" class="button">ออกจากระบบ</a>
+            </div>
+        </div>
+    <h2>📋รายการจองหนังสือ</h2>
 <table>
     <thead>
         <tr>
@@ -16,6 +35,7 @@
             <th>📆 วันที่กำหนดคืน</th>
             <th>🔄 สถานะ</th>
             <th>📌 วันที่คืนจริง</th>
+            <th>🔄 คืนหนังสือ</th>
         </tr>
     </thead>
     <tbody id="reservation-list">

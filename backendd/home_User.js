@@ -28,7 +28,7 @@ const BASE_URL = 'http://localhost:8080';
     const reserveBook = async (bookId) => {
         try {
             const response = await axios.post(`${BASE_URL}/reservations`, { book_id: bookId });
-            alert('คุณได้ทำการจองหนังสือสำเร็จ!');
+            alert('กรุณากรอกวันที่ยืเเละจะทำการคืนหนังสือ');
             console.log(response.data);
     
             
@@ -39,6 +39,19 @@ const BASE_URL = 'http://localhost:8080';
             alert('เกิดข้อผิดพลาดในการจองหนังสือ');
         }
     };
+    document.addEventListener("DOMContentLoaded", async () => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (!user) {
+            window.location.href = "login.html";
+        } else {
+            document.getElementById("username").textContent = user.firstname + " " + user.lastname;
+        }
+    });
+    document.getElementById("logout").addEventListener("click", async () => {
+        await fetch('http://localhost:8080/logout', { method: 'POST' });
+        localStorage.removeItem("user"); // ลบ session ของผู้ใช้
+        window.location.href = "login.html";
+    });
     
 
     const searchBooks = () => {

@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <div class="navbar " id="adminDashboard">
+    <div class="navbar" id="adminDashboard">
         <h2>Admin Dashboard</h2>
+        <div class="section">
+            <a href="home.html" class="button">หน้าหลัก</a>
+        </div>
         <div class="section">
             <a href="mgbook.html" class="button">จัดการหนังสือ</a>
         </div>
@@ -18,7 +22,43 @@
         <div class="section">
             <a href="reservation.html" class="button">จำนวนหนังสือที่ถูกยืมอยู่</a>
         </div>
+        <div class="section">
+            <a href="login.html" class="button">ออกจากระบบ</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>ภาพรวมข้อมูลระบบ</h2>
+        <p>ข้อมูลรวม: จำนวนหนังสือ, จำนวนหนังสือที่ถูกยืม, การจองหนังสือ, และข้อมูลลูกค้า</p>
         
+        <div class="overview">
+            <div class="stat">
+                <h3>จำนวนหนังสือทั้งหมด</h3>
+                <p>120</p>
+            </div>
+            <div class="stat">
+                <h3>จำนวนหนังสือที่ถูกยืม</h3>
+                <p>45</p>
+            </div>
+            <div class="stat">
+                <h3>จำนวนลูกค้า</h3>
+                <p>150</p>
+            </div>
+            <div class="stat">
+                <h3>หนังสือที่ถูกจอง</h3>
+                <p>30</p>
+            </div>
+            <div class="stat">
+                <h3>หนังสือเกินกำหนด</h3>
+                <p>10</p>
+            </div>
+        </div>
+
+        <h2>แจ้งเตือนหนังสือเกินกำหนด</h2>
+        <ul id="overdueBooks">
+            <li>"Data Science 101" - ผู้ใช้: สมชาย (เกินกำหนด 5 วัน)</li>
+            <li>"JavaScript Guide" - ผู้ใช้: มาลี (เกินกำหนด 3 วัน)</li>
+        </ul>
     </div>
 </body>
 </html>

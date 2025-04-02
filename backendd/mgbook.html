@@ -8,6 +8,24 @@
 </head>
 <body>
     <div class="container">
+        <div class="navbar " id="adminDashboard">
+            <h2>Admin Dashboard</h2>
+            <div class="section">
+                <a href="home.html" class="button">หน้าหลัก</a>
+            </div>
+            <div class="section">
+                <a href="mgbook.html" class="button">จัดการหนังสือ</a>
+            </div>
+            <div class="section">
+                <a href="user.html" class="button">ดูข้อมูลลูกค้า</a>
+            </div>
+            <div class="section">
+                <a href="reservation.html" class="button">จำนวนหนังสือที่ถูกยืมอยู่</a>
+            </div>
+            <div class="section">
+                <a href="login.html" class="button">ออกจากระบบ</a>
+            </div>
+        </div>
         <h1>📚 Book Management Page</h1>
         
         <!-- ส่วนเพิ่มหนังสือ -->
@@ -38,16 +56,8 @@
 
         <div class="center">
             <button type="button" onclick="submitData()" class="button">📤 ส่งข้อมูล</button>
+            <a href="home.html" class="back-button">⬅️Back to admin dashboard</a>
         </div>
-        
-        <div>
-            <input type="text" name="search-title" placeholder="ค้นหาตามชื่อหนังสือ">
-            <input type="text" name="search-author" placeholder="ค้นหาตามชื่อผู้เขียน">
-            <input type="text" name="search-category" placeholder="ค้นหาตามประเภท">
-            <button onclick="searchBooks()">🔍 ค้นหา</button>
-        </div>
-        <hr>
-        <!-- ตารางแสดงหนังสือ -->
         <h2>📖 รายการหนังสือ</h2>
         
         <table>
@@ -68,7 +78,7 @@
             </tbody>
         </table>
 
-    <a href="home.html" class="back-button">Back to admin dashboard</a>
+    
         
     </div>
 

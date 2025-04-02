@@ -24,6 +24,7 @@ const loadData = async () => {
                     <th>Last Name</th>
                     <th>Role</th>
                     <th>Tel</th>
+                    <th>Address</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -37,6 +38,7 @@ const loadData = async () => {
                     <td>${user.lastname}</td>
                     <td>${user.role}</td>
                     <td>${user.tel}</td>
+                    <td>${user.address}</td>
                     <td>
                         <a href="user.html?id=${user.id}">
                             <button>Edit</button>

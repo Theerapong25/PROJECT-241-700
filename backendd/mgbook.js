@@ -28,7 +28,6 @@ const loadData = async () => {
                         <a href="mgbook.html?book_id=${book.book_id}">
                             <button>Edit</button>
                         </a>
-                        <button class="delete" data-id="${book.book_id}">Delete</button>
                     </td>
                 </tr>`;
         }
